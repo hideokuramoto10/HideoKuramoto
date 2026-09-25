@@ -96,7 +96,7 @@ export default function WorkLb() {
               <AiOutlineLink className="text-xl" />
               <span>View Live Demo</span>
             </a>
-            {!isWebDesign && (
+            {/*!isWebDesign && (
               <a
                 href={work.githubUrl}
                 target="_blank"
@@ -106,7 +106,7 @@ export default function WorkLb() {
                 <FiGithub className="text-xl" />
                 <span>View on GitHub</span>
               </a>
-            )}
+            )*/}
           </div>
         </div>
       </motion.div>

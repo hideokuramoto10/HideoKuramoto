@@ -149,11 +149,11 @@ export default function ProfileCard({ profileData }: Props) {
             download
             border
           />
-          <MyLink
+          {/*<MyLink
             name="my github"
             Icon={AiFillGithub}
             url="https://github.com/hideokuramoto10"
-          />
+          />*/}
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function MyLink({ name, Icon, border, url, download }: Props) {
       target="_blank"
       href={url}
       download={download ? true : undefined}
-      className={`w-1/2 ${
+      className={`w-full ${
         border ? "vCustomLine relative before:right-0" : ""
       } h-full flex justify-center items-center gap-4 text-xl text-gray-600 font-semibold uppercase cursor-pointer group`}
     >

@@ -12,7 +12,7 @@ export default function Facts() {
       <Fact Icon={BsCodeSlash} desc="100,000+ Lines Written" border />
       <Fact Icon={BsAwardFill} desc="8+ Years Experience" border />
       <Fact Icon={BsGlobe} desc="5+ Countries Worked" border />
-      <Fact Icon={BsJournalAlbum} desc="20+ Projects Shipped" />
+      <Fact Icon={BsJournalAlbum} desc="40+ Projects Shipped" />
     </ul>
   )
 }
