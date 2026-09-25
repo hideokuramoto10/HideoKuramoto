@@ -10,9 +10,9 @@ import { saveMessage } from "../../lib/adminMessages"
 
 interface Inputs { fullName: string; email: string; message: string }
 
-const SERVICE_ID  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID  ?? ""
-const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID ?? ""
-const PUBLIC_KEY  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY  ?? ""
+const SERVICE_ID  = "service_67w2jyj" //process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID  ?? ""
+const TEMPLATE_ID = "template_uztwi6g" //process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID ?? ""
+const PUBLIC_KEY  = "UgOS9J-RlDf9l3wmK" //process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY  ?? ""
 
 const isValidEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)
 
