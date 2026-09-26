@@ -1,4 +1,5 @@
 import { ExperienceData } from "../../types"
+import { useTranslateContent } from "../../lib/i18n"
 
 interface Props {
   resume: ExperienceData
@@ -6,6 +7,8 @@ interface Props {
 }
 
 export default function ResumeItem({ resume, border }: Props) {
+  const tc = useTranslateContent()
+
   return (
     <div
       className={`relative pl-12 ${
@@ -22,17 +25,17 @@ export default function ResumeItem({ resume, border }: Props) {
 
       {/* Title */}
       <h3 className="text-[1.6rem] font-semibold text-gray-800 mb-2 leading-tight ml-12">
-        {resume.title}
+        {tc("resume", resume.id, "title", resume.title)}
       </h3>
 
       {/* Subtitle */}
       <p className="text-gray-500 text-[1.4rem] mb-3 font-normal ml-12">
-        {resume.subTitle}
+        {tc("resume", resume.id, "subTitle", resume.subTitle)}
       </p>
 
       {/* Description */}
       <p className="text-gray-600 text-[1.4rem] leading-[1.8] ml-12">
-        {resume.desc}
+        {tc("resume", resume.id, "desc", resume.desc)}
       </p>
     </div>
   )

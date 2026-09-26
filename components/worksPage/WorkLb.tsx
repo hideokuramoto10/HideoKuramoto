@@ -6,16 +6,18 @@ import { FiGithub } from "react-icons/fi"
 import { worksData } from "../../data"
 import { currentWorkIdVar } from "../../store"
 import { useReactiveVar } from "../../hooks/useReactiveVar"
-import { useTranslate } from "../../lib/i18n"
+import { useTranslate, useTranslateContent } from "../../lib/i18n"
 
 export default function WorkLb() {
   const t = useTranslate()
+  const tc = useTranslateContent()
   const workId = useReactiveVar(currentWorkIdVar)
   const work = worksData.find((w) => w.id === workId)
   if (!work) return null
 
   // Check if this is a Web Design project
   const isWebDesign = work.workTabs.some((tab) => tab.tab === "Web Design")
+  const title = tc("work", work.id, "title", work.title)
 
   return (
     <motion.div
@@ -42,7 +44,7 @@ export default function WorkLb() {
 
         {/* Hero Image with Modern Overlay */}
         <div className="relative w-full rounded-t-3xl overflow-hidden" style={{ height: "26rem" }}>
-          <Image src={work.images[0].url} alt={work.title} fill className="object-cover brightness-90" />
+          <Image src={work.images[0].url} alt={title} fill className="object-cover brightness-90" />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-gray-900/20 to-transparent" />
           
           {/* Floating Badge */}
@@ -59,10 +61,10 @@ export default function WorkLb() {
           <div className="mb-6">
             <div className="w-16 h-1 bg-main-orange rounded-full mb-4" />
             <h2 className="text-gray-800 text-[2.2rem] md:text-[2.8rem] font-bold capitalize mb-3 leading-tight">
-              {work.title}
+              {title}
             </h2>
             <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-              {work.description}
+              {tc("work", work.id, "description", work.description)}
             </p>
           </div>
 

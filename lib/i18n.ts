@@ -1,5 +1,6 @@
 import { useReactiveVar } from "../hooks/useReactiveVar"
 import { languageVar } from "../store"
+import { getJapaneseContent } from "./japaneseContent"
 
 const japanese: Record<string, string> = {
   about: "概要",
@@ -8,6 +9,8 @@ const japanese: Record<string, string> = {
   blog: "ブログ",
   stats: "統計",
   "about me": "自己紹介",
+  Experience: "職務経歴",
+  Education: "学歴",
   skill: "スキル",
   skills: "スキル一覧",
   quote: "メッセージ",
@@ -20,10 +23,11 @@ const japanese: Record<string, string> = {
   "All Projects": "すべてのプロジェクト",
   "Web Design": "ウェブデザイン",
   "AI": "AI",
+  "Full-Stack": "フルスタック",
   residence: "居住地",
   address: "住所",
   email: "メール",
-  freelance: "稼働状況",
+  freelance: "フリーランス",
   Japan: "日本",
   "Osaka, Japan": "大阪、日本",
   Available: "対応可能",
@@ -42,8 +46,28 @@ const japanese: Record<string, string> = {
   "40+ Projects Shipped": "40件以上のプロジェクトを公開",
   "download cv": "履歴書をダウンロード",
   "Senior AI Engineer": "シニアAIエンジニア",
+  "Hideo Kuramoto": "倉本秀夫",
+  "Senior AI & Full Stack Engineer": "シニアAI・フルスタックエンジニア",
   "Full Stack Developer": "フルスタック開発者",
   "LLM & RAG Specialist": "LLM・RAGスペシャリスト",
+  English: "英語",
+  Japanese: "日本語",
+  Knowledge: "知識",
+  "Public Repos": "公開リポジトリ",
+  "Total Commits": "総コミット数",
+  "Pull Requests": "プルリクエスト",
+  Contributions: "コントリビューション",
+  "LangChain & LangGraph": "LangChain・LangGraph",
+  "RAG Pipelines": "RAGパイプライン",
+  "AI Agents": "AIエージェント",
+  "OpenAI / GPT-5.6 APIs": "OpenAI / GPT-5.6 API",
+  "Vector Databases (Pinecone, Weaviate)": "ベクトルデータベース（Pinecone、Weaviate）",
+  "Prompt Engineering & Fine-tuning (LoRA, PEFT)": "プロンプト設計・ファインチューニング（LoRA、PEFT）",
+  "Docker & Kubernetes": "Docker・Kubernetes",
+  "AWS & Terraform": "AWS・Terraform",
+  "PostgreSQL / MongoDB / Redis / Elasticsearch": "PostgreSQL / MongoDB / Redis / Elasticsearch",
+  "GraphQL & REST APIs": "GraphQL・REST API",
+  "Microservices Architecture": "マイクロサービスアーキテクチャ",
   Freelancer: "フリーランス",
   "Read More": "続きを読む",
   "Live Project": "公開中のプロジェクト",
@@ -71,4 +95,24 @@ const japanese: Record<string, string> = {
 export function useTranslate() {
   const language = useReactiveVar(languageVar)
   return (text: string) => (language === "ja" ? japanese[text] ?? text : text)
+}
+
+export function useTranslateContent() {
+  const language = useReactiveVar(languageVar)
+  return (section: string, id: string, field: string, text: string) =>
+    language === "ja" ? getJapaneseContent(section, id, field, text) : text
+}
+
+export function useTranslateDate() {
+  const language = useReactiveVar(languageVar)
+  const months: Record<string, string> = {
+    Jan: "1月", Feb: "2月", Mar: "3月", Apr: "4月", May: "5月", Jun: "6月",
+    Jul: "7月", Aug: "8月", Sep: "9月", Oct: "10月", Nov: "11月", Dec: "12月",
+  }
+
+  return (date: string) => {
+    if (language !== "ja") return date
+    const match = date.match(/^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4})$/)
+    return match ? `${match[2]}年${months[match[1]]}` : date
+  }
 }

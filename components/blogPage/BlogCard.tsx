@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { BlogPost } from "../../types"
 import { currentBlogIdVar } from "../../store"
 import { BsClock, BsArrowRight } from "react-icons/bs"
-import { useTranslate } from "../../lib/i18n"
+import { useTranslate, useTranslateContent, useTranslateDate } from "../../lib/i18n"
 
 interface Props {
   post: BlogPost
@@ -11,6 +11,9 @@ interface Props {
 
 export default function BlogCard({ post }: Props) {
   const t = useTranslate()
+  const tc = useTranslateContent()
+  const td = useTranslateDate()
+  const title = tc("blog", post.id, "title", post.title)
 
   return (
     <motion.li
@@ -26,7 +29,7 @@ export default function BlogCard({ post }: Props) {
       <div className="work relative overflow-hidden rounded-3xl mx-10 mt-10" style={{ height: "24rem" }}>
         <Image
           src={post.coverImage}
-          alt={post.title}
+          alt={title}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -47,11 +50,11 @@ export default function BlogCard({ post }: Props) {
       {/* body */}
       <div className="px-10 py-8">
         <div className="flex items-center gap-3 text-gray-400 text-base mb-4">
-          <span>{post.date}</span>
+          <span>{td(post.date)}</span>
         </div>
 
         <h3 className="text-gray-800 text-[2rem] font-bold leading-tight mb-6 line-clamp-2 group-hover:text-main-orange transition-colors duration-300">
-          {post.title}
+          {title}
         </h3>
 
         <div className="flex flex-wrap gap-2">

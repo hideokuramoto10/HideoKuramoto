@@ -5,6 +5,7 @@ import { worksData } from "../../data"
 import { motion, AnimatePresence } from "framer-motion"
 import { currentWorkVar } from "../../store"
 import { useReactiveVar } from "../../hooks/useReactiveVar"
+import { useTranslateContent } from "../../lib/i18n"
 
 // Shuffle function to randomize array order
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -18,6 +19,7 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 export default function Works() {
   const currentTab = useReactiveVar(currentWorkVar)
+  const tc = useTranslateContent()
 
   const filteredWorks = useMemo(() => {
     const filtered = worksData.filter((w) =>
@@ -41,7 +43,7 @@ export default function Works() {
           {filteredWorks.map((w, index) => (
             <Work
               key={w.id}
-              title={w.title}
+              title={tc("work", w.id, "title", w.title)}
               imageUrl={w.images[0].url}
               projectId={w.id}
             />

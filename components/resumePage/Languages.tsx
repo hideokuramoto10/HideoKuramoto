@@ -1,10 +1,13 @@
 import { FieldValueData } from "../../types"
+import { useTranslate } from "../../lib/i18n"
 
 interface Props {
   languages: FieldValueData[]
 }
 
 export default function Languages({ languages }: Props) {
+  const t = useTranslate()
+
   return (
     <div className="grid grid-cols-2 gap-8">
       {languages.map((l) => (
@@ -38,7 +41,7 @@ export default function Languages({ languages }: Props) {
               <span className="text-[2rem] font-bold text-gray-800">{l.value}/10</span>
             </div>
           </div>
-          <h3 className="text-[1.6rem] text-gray-700 font-medium text-center capitalize">{l.field}</h3>
+          <h3 className="text-[1.6rem] text-gray-700 font-medium text-center capitalize">{t(l.field)}</h3>
         </div>
       ))}
     </div>

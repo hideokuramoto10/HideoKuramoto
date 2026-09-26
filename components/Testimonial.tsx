@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { TestimonialData } from "../types"
-import { useTranslate } from "../lib/i18n"
+import { useTranslate, useTranslateContent } from "../lib/i18n"
 
 interface Props {
   testimonial: TestimonialData
@@ -8,11 +8,12 @@ interface Props {
 
 export default function Testimonial({ testimonial }: Props) {
   const t = useTranslate()
+  const tc = useTranslateContent()
 
   return (
     <div className="px-12 py-10 flex flex-col items-center">
       <p className="text-2xl italic text-gray-500 text-center font-medium tracking-wide relative mb-8 quote">
-        <span className="inline-block mx-14">{t(testimonial.quote)}</span>
+        <span className="inline-block mx-14">{tc("testimonial", String(testimonial.id), "quote", t(testimonial.quote))}</span>
       </p>
 
       <div className="w-[90px] h-[90px] relative rounded-full overflow-hidden border-2 border-gray-100">
@@ -27,7 +28,7 @@ export default function Testimonial({ testimonial }: Props) {
       <h2 className="capitalize text-2xl font-semibold text-gray-800 mt-3 mb-1.5">
         {t(testimonial.userName)}
       </h2>
-      <p className="text-xl text-gray-400 capitalize">{t(testimonial.userProfession)}</p>
+      <p className="text-xl text-gray-400 capitalize">{tc("testimonial", String(testimonial.id), "userProfession", t(testimonial.userProfession))}</p>
     </div>
   )
 }

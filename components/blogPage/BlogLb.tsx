@@ -5,15 +5,20 @@ import { BsClock, BsCalendar3, BsArrowRight } from "react-icons/bs"
 import { blogPosts } from "../../data"
 import { currentBlogIdVar } from "../../store"
 import { useReactiveVar } from "../../hooks/useReactiveVar"
-import { useTranslate } from "../../lib/i18n"
+import { useTranslate, useTranslateContent, useTranslateDate } from "../../lib/i18n"
 
 export default function BlogLb() {
   const t = useTranslate()
+  const tc = useTranslateContent()
+  const td = useTranslateDate()
   const blogId = useReactiveVar(currentBlogIdVar)
   const post = blogPosts.find((p) => p.id === blogId)
   if (!post) return null
 
-  const paragraphs = post.content.split("\n\n")
+  const title = tc("blog", post.id, "title", post.title)
+  const excerpt = tc("blog", post.id, "excerpt", post.excerpt)
+  const content = tc("blog", post.id, "content", post.content)
+  const paragraphs = content.split("\n\n")
 
   return (
     <motion.div
@@ -41,7 +46,7 @@ export default function BlogLb() {
 
         {/* cover */}
         <div className="relative w-full rounded-t-3xl overflow-hidden" style={{ height: "32rem" }}>
-          <Image src={post.coverImage} alt={post.title} fill className="object-cover" />
+          <Image src={post.coverImage} alt={title} fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           
           {/* Category Badge */}
@@ -53,7 +58,7 @@ export default function BlogLb() {
           <div className="absolute bottom-10 left-10 right-10 flex items-center gap-6">
             <div className="flex items-center gap-3 px-5 py-2.5 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
               <BsCalendar3 className="text-main-orange text-xl" />
-              <span className="text-gray-800 text-base font-semibold">{post.date}</span>
+              <span className="text-gray-800 text-base font-semibold">{td(post.date)}</span>
             </div>
             {/*<div className="flex items-center gap-3 px-5 py-2.5 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
               <BsClock className="text-main-orange text-xl" />
@@ -64,12 +69,12 @@ export default function BlogLb() {
 
         <div className="p-12">
           <h2 className="text-gray-800 text-[3.2rem] font-black leading-tight mb-6">
-            {post.title}
+            {title}
           </h2>
 
           <div className="border-l-4 border-main-orange bg-sky-50 pl-8 pr-6 py-6 mb-10 rounded-r-2xl">
             <p className="text-gray-700 text-[1.8rem] font-medium leading-relaxed">
-              {post.excerpt}
+              {excerpt}
             </p>
           </div>
 

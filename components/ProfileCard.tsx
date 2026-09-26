@@ -133,7 +133,7 @@ export default function ProfileCard({ profileData }: Props) {
         </div>
 
         <h1 className="text-center text-gray-800 text-[3.4rem] font-medium mt-8 mb-0.5">
-          {profileData.name}
+           {t(profileData.name)}
         </h1>
 
         <Typing />

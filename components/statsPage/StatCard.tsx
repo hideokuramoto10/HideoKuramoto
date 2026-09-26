@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react"
 import { StatItem } from "../../types"
+import { useTranslateContent } from "../../lib/i18n"
 
 interface Props {
   stat: StatItem
@@ -28,6 +29,7 @@ function useCountUp(target: number, duration = 1800) {
 
 export default function StatCard({ stat, border }: Props) {
   const count = useCountUp(stat.value)
+  const tc = useTranslateContent()
 
   return (
     <li
@@ -49,10 +51,10 @@ export default function StatCard({ stat, border }: Props) {
       </div>
 
       <h3 className="text-gray-800 text-[1.5rem] font-semibold capitalize mb-2">
-        {stat.label}
+        {tc("stat", stat.id, "label", stat.label)}
       </h3>
       <p className="text-gray-500 text-[1.3rem] leading-relaxed max-w-[20rem]">
-        {stat.description}
+        {tc("stat", stat.id, "description", stat.description)}
       </p>
     </li>
   )

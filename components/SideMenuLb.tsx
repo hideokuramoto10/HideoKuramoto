@@ -6,12 +6,15 @@ import SideMenuBtn from "./SideMenuBtn"
 import { ProfileData } from "../types"
 import { currentMenuVar, showMenuVar } from "../store"
 import { useReactiveVar } from "../hooks/useReactiveVar"
+import { useTranslate } from "../lib/i18n"
+import LanguageToggle from "./LanguageToggle"
 
 interface Props {
   profile: ProfileData
 }
 
 export default function SideMenuLb({ profile }: Props) {
+  const t = useTranslate()
   const sideMenu = useReactiveVar(showMenuVar)
   const menuId = useReactiveVar(currentMenuVar)
 
@@ -48,9 +51,9 @@ export default function SideMenuLb({ profile }: Props) {
             />
           </div>
           <h3 className="text-[1.8rem] text-gray-800 font-semibold text-center mb-1">
-            {profile.name}
+            {t(profile.name)}
           </h3>
-          <p className="text-main-orange text-xl mb-5">Senior AI &amp; Full Stack Engineer</p>
+          <p className="text-main-orange text-xl mb-5">{t("Senior AI & Full Stack Engineer")}</p>
 
           {/* social icons */}
           {/*<div className="flex gap-5 items-center justify-center">
@@ -87,6 +90,7 @@ export default function SideMenuLb({ profile }: Props) {
 
         {/* download cv */}
         <div className="p-10">
+          <LanguageToggle className="w-full h-12 mb-4 rounded-lg bg-gray-100 text-gray-600 text-xl font-semibold hover:text-main-orange transition-colors" />
           <a
             href={profile.cv}
             download
@@ -94,7 +98,7 @@ export default function SideMenuLb({ profile }: Props) {
             rel="noreferrer"
             className="w-full h-16 rounded-lg bg-main-orange text-white text-xl font-bold uppercase flex items-center justify-center hover:opacity-85 transition-opacity duration-200"
           >
-            Download CV
+            {t("Download CV")}
           </a>
         </div>
       </main>

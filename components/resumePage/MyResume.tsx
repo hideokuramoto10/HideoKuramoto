@@ -2,8 +2,11 @@ import IconTitle from "./IconTitle"
 import ResumeItem from "./ResumeItem"
 import { FaGraduationCap, FaBriefcase } from "react-icons/fa"
 import { experienceData, educationData } from "../../data"
+import { useTranslate } from "../../lib/i18n"
 
 export default function MyResume() {
+  const t = useTranslate()
+
   return (
     <div className="px-10 py-10">
       {/* Experience Section */}
@@ -13,7 +16,7 @@ export default function MyResume() {
             <FaBriefcase className="text-2xl text-white" />
           </div>
           <h2 className="text-gray-800 text-[1.8rem] font-bold uppercase tracking-wider">
-            Experience
+            {t("Experience")}
           </h2>
         </div>
         
@@ -35,7 +38,7 @@ export default function MyResume() {
             <FaGraduationCap className="text-2xl text-white" />
           </div>
           <h2 className="text-gray-800 text-[1.8rem] font-bold uppercase tracking-wider">
-            Education
+            {t("Education")}
           </h2>
         </div>
         
