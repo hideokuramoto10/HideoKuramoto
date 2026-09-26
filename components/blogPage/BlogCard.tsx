@@ -35,10 +35,10 @@ export default function BlogCard({ post }: Props) {
         </span>
 
         {/* Read Time Badge */}
-        <div className="absolute bottom-6 left-6 z-10 flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
+        {/*<div className="absolute bottom-6 left-6 z-10 flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
           <BsClock className="text-main-orange text-lg" />
           <span className="text-base font-semibold text-gray-800">{post.readTime}</span>
-        </div>
+        </div>*/}
       </div>
 
       {/* body */}

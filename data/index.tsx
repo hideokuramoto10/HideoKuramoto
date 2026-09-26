@@ -32,7 +32,7 @@ export const menus: MenuData[] = [
   { id: 3, label: "works",   Icon: FiCode,         Component: Works          },
   { id: 4, label: "blog",    Icon: FaBlog,         Component: Blog           },
   { id: 5, label: "stats",   Icon: FaChartBar,     Component: Stats          },
-  { id: 6, label: "contact", Icon: AiOutlineMail,  Component: Contact        },
+  //{ id: 6, label: "contact", Icon: AiOutlineMail,  Component: Contact        },
   //{ id: 7, label: "admin",   Icon: FaUserShield,   Component: AdminDashboard },
 ]
 

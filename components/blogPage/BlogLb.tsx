@@ -53,10 +53,10 @@ export default function BlogLb() {
               <BsCalendar3 className="text-main-orange text-xl" />
               <span className="text-gray-800 text-base font-semibold">{post.date}</span>
             </div>
-            <div className="flex items-center gap-3 px-5 py-2.5 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
+            {/*<div className="flex items-center gap-3 px-5 py-2.5 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
               <BsClock className="text-main-orange text-xl" />
               <span className="text-gray-800 text-base font-semibold">{post.readTime}</span>
-            </div>
+            </div>*/}
           </div>
         </div>
 
