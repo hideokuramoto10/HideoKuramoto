@@ -21,7 +21,7 @@ import { MenuData, ServiceData, ClientData, TestimonialData, WorkData, BlogPost,
 import About from "../components/aboutPage/About"
 import Resume from "../components/resumePage/Resume"
 import Works from "../components/worksPage/Works"
-import Contact from "../components/contactPage/Contact"
+//import Contact from "../components/contactPage/Contact"
 import Blog from "../components/blogPage/Blog"
 import Stats from "../components/statsPage/Stats"
 //import AdminDashboard from "../components/adminPage/AdminDashboard"
