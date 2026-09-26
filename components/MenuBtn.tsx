@@ -1,4 +1,5 @@
 import { MenuData } from "../types"
+import { useTranslate } from "../lib/i18n"
 
 interface Props {
   menu: MenuData
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function MenuBtn({ menu, noBorder, active, onClick }: Props) {
+  const t = useTranslate()
   return (
     <div
       onClick={onClick}
@@ -19,7 +21,7 @@ export default function MenuBtn({ menu, noBorder, active, onClick }: Props) {
     >
       <menu.Icon className="text-[2rem] transition-all duration-300 group-hover:text-main-orange" />
       <p className="uppercase text-base font-medium transition-all duration-300 group-hover:text-main-orange">
-        {menu.label}
+        {t(menu.label)}
       </p>
     </div>
   )

@@ -5,6 +5,7 @@ import BlogLb from "./BlogLb"
 import { blogPosts, blogTabs } from "../../data"
 import { currentBlogIdVar } from "../../store"
 import { useReactiveVar } from "../../hooks/useReactiveVar"
+import { useTranslate } from "../../lib/i18n"
 
 const titleVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -19,6 +20,7 @@ const titleVariants = {
 }
 
 export default function Blog() {
+  const t = useTranslate()
   const [activeTab, setActiveTab] = useState("All")
   const blogId = useReactiveVar(currentBlogIdVar)
 
@@ -40,7 +42,7 @@ export default function Blog() {
         className="sticky top-0 bg-white customLine relative before:bottom-0 borderLeft z-30 py-10 flex flex-wrap gap-8 justify-center sm:justify-between items-center shadow-sm"
       >
         <span className="ml-12 customCircle relative tracking-wide capitalize text-3xl text-gray-800 font-semibold">
-          blog
+          {t("blog")}
         </span>
         <ul className="flex flex-wrap items-center gap-6 mr-12 ml-12">
           {blogTabs.map((tab) => (
@@ -51,7 +53,7 @@ export default function Blog() {
                 activeTab === tab ? "text-main-orange" : "text-gray-500"
               }`}
             >
-              {tab}
+              {t(tab)}
             </li>
           ))}
         </ul>

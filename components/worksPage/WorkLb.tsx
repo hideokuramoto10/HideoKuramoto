@@ -6,8 +6,10 @@ import { FiGithub } from "react-icons/fi"
 import { worksData } from "../../data"
 import { currentWorkIdVar } from "../../store"
 import { useReactiveVar } from "../../hooks/useReactiveVar"
+import { useTranslate } from "../../lib/i18n"
 
 export default function WorkLb() {
+  const t = useTranslate()
   const workId = useReactiveVar(currentWorkIdVar)
   const work = worksData.find((w) => w.id === workId)
   if (!work) return null
@@ -47,7 +49,7 @@ export default function WorkLb() {
           <div className="absolute bottom-6 left-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md rounded-full shadow-lg">
               <div className="w-2 h-2 bg-main-orange rounded-full animate-pulse" />
-              <span className="text-sm font-semibold text-gray-800">Live Project</span>
+              <span className="text-sm font-semibold text-gray-800">{t("Live Project")}</span>
             </div>
           </div>
         </div>
@@ -71,7 +73,7 @@ export default function WorkLb() {
                 <path d="M13 7H7v6h6V7z" />
                 <path fillRule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clipRule="evenodd" />
               </svg>
-              Tech Stack
+              {t("Tech Stack")}
             </h3>
             <div className="flex flex-wrap gap-2">
               {work.technologies.map((tech, idx) => (
@@ -94,7 +96,7 @@ export default function WorkLb() {
               className={`${isWebDesign ? 'flex-none w-full' : 'flex-1'} flex items-center justify-center gap-3 px-6 py-4 bg-main-orange text-white text-base font-bold rounded-xl hover:bg-opacity-90 hover:shadow-lg hover:scale-105 transition-all duration-300`}
             >
               <AiOutlineLink className="text-xl" />
-              <span>View Live Demo</span>
+              <span>{t("View Live Demo")}</span>
             </a>
             {/*!isWebDesign && (
               <a

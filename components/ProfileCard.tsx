@@ -6,12 +6,15 @@ import MyLink from "./MyLink"
 import Typing from "./Typing"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { useTranslate } from "../lib/i18n"
 
 interface Props {
   profileData: ProfileData
 }
 
 export default function ProfileCard({ profileData }: Props) {
+  const t = useTranslate()
+
   return (
     <div className="profile h-full lg:w-[42rem] xl:w-[48rem] bg-white rounded-lg relative lg:block hidden">
       <div className="relative z-40 w-full h-full myShadow flex flex-col items-center justify-center pt-16">
@@ -138,7 +141,7 @@ export default function ProfileCard({ profileData }: Props) {
         {/* location */}
         <div className="flex items-center gap-2 mt-4 text-gray-500 text-[1.4rem]">
           <MdLocationOn className="text-main-orange text-2xl flex-shrink-0" />
-          <span>Osaka, Japan</span>
+          <span>{t("Osaka, Japan")}</span>
         </div>
 
         <div className="absolute bottom-0 left-0 flex w-full h-28 borderLeft customLine">

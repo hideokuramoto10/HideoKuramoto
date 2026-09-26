@@ -1,4 +1,5 @@
 import { MenuData } from "../types"
+import { useTranslate } from "../lib/i18n"
 
 interface Props {
   menu: MenuData
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function SideMenuBtn({ menu, active, onClick, last }: Props) {
+  const t = useTranslate()
   return (
     <button
       onClick={onClick}
@@ -18,7 +20,7 @@ export default function SideMenuBtn({ menu, active, onClick, last }: Props) {
       } border-t border-gray-100 border-solid capitalize font-medium`}
     >
       <menu.Icon />
-      {menu.label}
+      {t(menu.label)}
     </button>
   )
 }

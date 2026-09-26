@@ -5,8 +5,10 @@ import { BsClock, BsCalendar3, BsArrowRight } from "react-icons/bs"
 import { blogPosts } from "../../data"
 import { currentBlogIdVar } from "../../store"
 import { useReactiveVar } from "../../hooks/useReactiveVar"
+import { useTranslate } from "../../lib/i18n"
 
 export default function BlogLb() {
+  const t = useTranslate()
   const blogId = useReactiveVar(currentBlogIdVar)
   const post = blogPosts.find((p) => p.id === blogId)
   if (!post) return null
@@ -44,7 +46,7 @@ export default function BlogLb() {
           
           {/* Category Badge */}
           <span className="absolute top-10 left-10 bg-main-orange text-white text-lg font-bold px-6 py-2.5 rounded-full shadow-xl">
-            {post.category}
+            {t(post.category)}
           </span>
 
           {/* Meta Info at Bottom */}
@@ -106,7 +108,7 @@ export default function BlogLb() {
           </div>
 
           <div className="flex flex-wrap gap-3 mt-12 pt-10 border-t-2 border-gray-100">
-            <span className="text-gray-500 font-bold text-base mr-2">Tags:</span>
+            <span className="text-gray-500 font-bold text-base mr-2">{t("Tags")}</span>
             {post.tags.map((tag) => (
               <span
                 key={tag}

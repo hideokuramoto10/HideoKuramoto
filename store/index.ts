@@ -29,5 +29,6 @@ export const currentWorkVar = createVar<string>("All")
 export const showMenuVar = createVar<boolean>(false)
 export const currentWorkIdVar = createVar<string | null>(null)
 export const currentBlogIdVar = createVar<string | null>(null)
+export const languageVar = createVar<"en" | "ja">("en")
 
 export const adminAuthVar = createVar<boolean>(false)

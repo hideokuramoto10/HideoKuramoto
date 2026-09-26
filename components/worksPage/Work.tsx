@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { currentWorkIdVar } from "../../store"
+import { useTranslate } from "../../lib/i18n"
 
 interface Props {
   title: string
@@ -9,6 +10,8 @@ interface Props {
 }
 
 export default function Work({ title, imageUrl, projectId }: Props) {
+  const t = useTranslate()
+
   return (
     <motion.li
       layout
@@ -41,7 +44,7 @@ export default function Work({ title, imageUrl, projectId }: Props) {
               {title}
             </h3>
             <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-              <span className="text-white/80 text-sm uppercase tracking-wider font-medium">View Project</span>
+              <span className="text-white/80 text-sm uppercase tracking-wider font-medium">{t("View Project")}</span>
               <svg className="w-4 h-4 text-main-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

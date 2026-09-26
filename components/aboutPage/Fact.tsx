@@ -1,5 +1,6 @@
 import MyIcon from "../MyIcon"
 import { IconType } from "react-icons"
+import { useTranslate } from "../../lib/i18n"
 
 interface Props {
   Icon: IconType
@@ -8,6 +9,8 @@ interface Props {
 }
 
 export default function Fact({ Icon, desc, border }: Props) {
+  const t = useTranslate()
+
   return (
     <li
       className={`w-full h-fit flex flex-col items-center py-10 px-12 ${
@@ -16,7 +19,7 @@ export default function Fact({ Icon, desc, border }: Props) {
     >
       <MyIcon Icon={Icon} />
       <p className="text-2xl text-gray-600 leading-relaxed tracking-wide text-center mt-4">
-        {desc}
+        {t(desc)}
       </p>
     </li>
   )

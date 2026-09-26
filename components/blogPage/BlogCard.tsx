@@ -3,12 +3,15 @@ import { motion } from "framer-motion"
 import { BlogPost } from "../../types"
 import { currentBlogIdVar } from "../../store"
 import { BsClock, BsArrowRight } from "react-icons/bs"
+import { useTranslate } from "../../lib/i18n"
 
 interface Props {
   post: BlogPost
 }
 
 export default function BlogCard({ post }: Props) {
+  const t = useTranslate()
+
   return (
     <motion.li
       layout
@@ -31,7 +34,7 @@ export default function BlogCard({ post }: Props) {
         
         {/* Category Badge */}
         <span className="absolute top-6 left-6 z-10 text-base font-bold px-5 py-2 bg-main-orange text-white rounded-full shadow-lg">
-          {post.category}
+          {t(post.category)}
         </span>
 
         {/* Read Time Badge */}
@@ -64,7 +67,7 @@ export default function BlogCard({ post }: Props) {
 
         {/* Read More Arrow */}
         <div className="mt-6 flex items-center gap-2 text-main-orange font-bold text-base group-hover:gap-4 transition-all duration-300">
-          <span>Read More</span>
+          <span>{t("Read More")}</span>
           <BsArrowRight className="text-xl" />
         </div>
       </div>

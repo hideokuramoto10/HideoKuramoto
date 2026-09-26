@@ -1,5 +1,6 @@
 import { BsCodeSlash } from "react-icons/bs"
 import { MdOutlineFlag } from "react-icons/md"
+import { useTranslate } from "../../lib/i18n"
 
 const devSkills = [
   { label: "AI", value: 95 },
@@ -33,6 +34,8 @@ function SkillBar({ label, value }: BarProps) {
 }
 
 export default function AboutSkills() {
+  const t = useTranslate()
+
   return (
     <div className="px-12 py-10 grid grid-cols-1 sm:grid-cols-2 gap-x-16 customLine relative before:bottom-0 borderLeft">
       {/* Development */}
@@ -40,11 +43,11 @@ export default function AboutSkills() {
         <div className="flex items-center gap-3 mb-8">
           <BsCodeSlash className="text-main-orange text-3xl" />
           <span className="text-[1.4rem] font-semibold tracking-widest text-gray-800 uppercase">
-            Development
+            {t("Development")}
           </span>
         </div>
         {devSkills.map((s) => (
-          <SkillBar key={s.label} label={s.label} value={s.value} />
+          <SkillBar key={s.label} label={t(s.label)} value={s.value} />
         ))}
       </div>
 
@@ -53,11 +56,11 @@ export default function AboutSkills() {
         <div className="flex items-center gap-3 mb-8">
           <MdOutlineFlag className="text-main-orange text-3xl" />
           <span className="text-[1.4rem] font-semibold tracking-widest text-gray-800 uppercase">
-            Language
+            {t("Language")}
           </span>
         </div>
         {langSkills.map((s) => (
-          <SkillBar key={s.label} label={s.label} value={s.value} />
+          <SkillBar key={s.label} label={t(s.label)} value={s.value} />
         ))}
       </div>
     </div>

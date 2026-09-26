@@ -53,7 +53,7 @@ export default function SideMenuLb({ profile }: Props) {
           <p className="text-main-orange text-xl mb-5">Senior AI &amp; Full Stack Engineer</p>
 
           {/* social icons */}
-          <div className="flex gap-5 items-center justify-center">
+          {/*<div className="flex gap-5 items-center justify-center">
             {socialMedia.map(({ id, Icon, label, mediaUrl }) => (
               <a
                 key={id}
@@ -66,7 +66,7 @@ export default function SideMenuLb({ profile }: Props) {
                 <Icon className="text-3xl" />
               </a>
             ))}
-          </div>
+          </div>*/}
         </div>
 
         {/* nav */}
